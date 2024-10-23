@@ -39,6 +39,14 @@ export default function Sumario({ navigation }: any) {
                 >
                     <Text style={styles.textoBotao}>Finalizar Agendamento</Text>
                 </Pressable>
+                <Pressable
+                    style={styles.botao}
+                    onPress={async () => {
+                        navigation.navigate('Inicio')
+                    }}
+                >
+                    <Text style={styles.textoBotao}> Inicio </Text>
+                </Pressable>
             </View>
         </View>
     )

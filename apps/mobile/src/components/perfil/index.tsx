@@ -10,7 +10,6 @@ export default function Perfil({ navigation }: any) {
         <View style={styles.container}>
             <Image source={require('../../../assets/avatar.png')} style={styles.avatar} />
             <Text style={styles.destaque}>Fala, {usuario?.nome}!</Text>
-            <Text style={styles.texto}>E-mail: {usuario?.email.toLowerCase()}</Text>
             <Text style={styles.texto}>Telefone: {TelefoneUtils.formatar(usuario?.telefone!)}</Text>
             <Pressable
                 style={styles.botao}

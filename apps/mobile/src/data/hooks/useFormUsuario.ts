@@ -6,8 +6,9 @@ export default function useFormUsuario() {
 
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
     const [telefone, setTelefone] = useState('')
-    const [errors, setErrors] = useState({ nome: '', email: '', telefone: '' })
+    const [errors, setErrors] = useState({ nome: '', email: '', senha: '', telefone: '' })
 
     function validate() {
         let errors: any = {}
@@ -19,6 +20,11 @@ export default function useFormUsuario() {
             errors.email = 'E-mail é obrigatório'
         } else if (!/\S+@\S+\.\S+/.test(email)) {
             errors.email = 'E-mail inválido'
+        }
+        if (!senha) {
+            errors.senha = 'Senha é obrigatória'
+        } else if (senha.length < 3) {
+            errors.senha = 'Senha deve ter pelo menos 6 caracteres'
         }
         if (!telefone) {
             errors.telefone = 'Telefone é obrigatório'
@@ -32,7 +38,7 @@ export default function useFormUsuario() {
 
     async function cadastrar() {
         if (validate()) {
-            await entrar({ nome, email, telefone })
+            await entrar({ nome, email, senha, telefone })
         }
     }
 
@@ -41,6 +47,8 @@ export default function useFormUsuario() {
         setNome,
         email,
         setEmail,
+        senha,
+        setSenha,
         telefone,
         setTelefone,
         errors,

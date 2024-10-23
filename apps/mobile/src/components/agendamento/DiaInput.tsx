@@ -1,4 +1,4 @@
-import { DataUtils } from '@barba/core'
+import { DataUtils } from '@/src/regras'
 import { StyleSheet, Text, Pressable, View } from 'react-native'
 
 export interface DiaInputProps {

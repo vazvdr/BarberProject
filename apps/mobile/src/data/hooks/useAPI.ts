@@ -1,23 +1,64 @@
 import { useCallback } from 'react'
+import useSessao from './useSessao'
 
-const URL_BASE = 'http://localhost:3001' // process.env.URL_BASE
+const URL_BASE = 'http://localhost:3001'
 
 export default function useAPI() {
-    const httpGet = useCallback(async function (uri: string): Promise<any> {
-        const res = await fetch(`${URL_BASE}/${uri}`)
-        const data = await res.json()
-        return data
-    }, [])
+    const { token } = useSessao()
 
-    const httpPost = useCallback(async function (uri: string, body: any): Promise<any> {
-        await fetch(`${URL_BASE}/${uri}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(body),
-        })
-    }, [])
+    const httpGet = useCallback(
+        async function (uri: string): Promise<any> {
+            const path = uri.startsWith('/') ? uri : `/${uri}`
 
-    return { httpGet, httpPost }
+            const resp = await fetch(`${URL_BASE}${path}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            return extrairDados(resp)
+        },
+        [token]
+    )
+
+    const httpPost = useCallback(
+        async function (uri: string, body: any): Promise<any> {
+            const path = uri.startsWith('/') ? uri : `/${uri}`
+            const resp = await fetch(`${URL_BASE}${path}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(body),
+            })
+            return extrairDados(resp)
+        },
+        [token]
+    )
+    const httpDelete = useCallback(
+        async function (uri: string): Promise<any> {
+            const path = uri.startsWith('/') ? uri : `/${uri}`
+            const resp = await fetch(`${URL_BASE}${path}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            return extrairDados(resp)
+        },
+        [token]
+    )
+
+    async function extrairDados(resp: Response) {
+        let conteudo = ''
+        try {
+            conteudo = await resp.text()
+            return JSON.parse(conteudo)
+        } catch (e) {
+            return conteudo
+        }
+    }
+
+    return { httpGet, httpPost, httpDelete }
 }

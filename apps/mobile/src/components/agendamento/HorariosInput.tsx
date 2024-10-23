@@ -1,4 +1,4 @@
-import { AgendaUtils, DataUtils } from '@barba/core'
+import { AgendaUtils, DataUtils } from '@/src/regras'
 import { useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import useAgendamento from '../../data/hooks/useAgendamento'

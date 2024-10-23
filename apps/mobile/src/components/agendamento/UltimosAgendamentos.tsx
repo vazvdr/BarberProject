@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
-import { Agendamento } from '@barba/core'
+import { Agendamento } from '@/src/regras'
 import useAPI from '../../data/hooks/useAPI'
 import React, { useEffect, useState } from 'react'
 import AgendamentoItem from './AgendamentoItem'

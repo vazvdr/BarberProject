@@ -1,5 +1,5 @@
 import { useProfissionais } from '@barba/ui'
-import { Profissional } from '@barba/core'
+import { Profissional } from '@/src/regras'
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import imagens from '../../data/constants/imagens'
 

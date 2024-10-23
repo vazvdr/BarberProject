@@ -1,5 +1,5 @@
 import { useServicos } from '@barba/ui'
-import { Servico } from '@barba/core'
+import { Servico } from '@/src/regras'
 import { Image, StyleSheet, Text, Pressable, View } from 'react-native'
 import imagens from '../../data/constants/imagens'
 
