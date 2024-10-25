@@ -19,8 +19,8 @@ const ContextoUsuario = createContext<ContextoUsuarioProps>({} as any)
 export function ProvedorUsuario({ children }: any) {
     const { httpPost } = useAPI()
     const { carregando, usuario, criarSessao, limparSessao } = useSessao()
-    /*const { get, set, remove } = useLocalStorage()
-    const [usuario2, setUsuario] = useState<Usuario | null>(null)*/
+    const { get, set, remove } = useLocalStorage()
+    /*const [usuario2, setUsuario] = useState<Usuario | null>(null)*/
     /*const [carregando2, setCarregando] = useState(true)*/
 
     /*const carregarUsuario = useCallback(

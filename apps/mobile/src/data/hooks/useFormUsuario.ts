@@ -24,7 +24,7 @@ export default function useFormUsuario() {
         if (!senha) {
             errors.senha = 'Senha é obrigatória'
         } else if (senha.length < 3) {
-            errors.senha = 'Senha deve ter pelo menos 6 caracteres'
+            errors.senha = 'Senha deve ter pelo menos 3 caracteres'
         }
         if (!telefone) {
             errors.telefone = 'Telefone é obrigatório'
