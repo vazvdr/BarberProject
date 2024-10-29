@@ -5,8 +5,13 @@
     "paths": {
       "@/*": [
         "./*"
-      ]
-    }
+      ],
+      // Adicione caminhos adicionais se necessário
+    },
+    "jsx": "react-native", // Assegura que o JSX seja tratado corretamente
+    "esModuleInterop": true, // Permite importações de módulos CommonJS
+    "skipLibCheck": true, // Ignora checagens de tipos em arquivos de definição de bibliotecas
+    "forceConsistentCasingInFileNames": true // Força a consistência de maiúsculas e minúsculas nos nomes de arquivos
   },
   "include": [
     "**/*.ts",
